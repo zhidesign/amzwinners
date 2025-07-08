@@ -18,7 +18,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        gradient: "animate-bounce-slow group relative overflow-hidden text-white px-6 py-2.5 text-base font-semibold rounded-lg shadow transform transition-all  ease-in-out hover:-translate-y-1 hover:shadow-md"
+        gradient: "animate-bounce-gradient bg-[length:200%_200%] bg-gradient-to-r from-yellow-400 to-orange-700 group relative overflow-hidden text-white px-6 py-2.5 text-base font-semibold rounded-lg shadow transform transition-all  ease-in-out hover:-translate-y-1 hover:shadow-md"
 
 
 

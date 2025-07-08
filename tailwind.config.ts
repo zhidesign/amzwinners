@@ -89,11 +89,17 @@ export default {
 					'0%, 100%': { transform: 'translateY(10)' },
 					'50%': { transform: 'translateY(-10%)' },
 				},
+				'gradient-x': {
+					'0%, 100%': { backgroundPosition: '0% 50%' },
+      				'50%': { backgroundPosition: '100% 50%' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'bounce-slow': 'bounceSlow 1.2s ease-in-out infinite',
+				'gradient-x': 'gradient-x 5s ease infinite',
+				'bounce-gradient': 'bounceSlow 1.2s ease-in-out infinite, gradient-x 5s ease infinite',
 			}
 		}
 	},

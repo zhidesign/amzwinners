@@ -15,10 +15,10 @@ export default function FAQ() {
          <div className="flex flex-col lg:flex-row justify-center items-center gap-12">
             <div>
                 <div>
-                    <h2 className="text-3xl font-bold text-center mb-8">
+                    <h2 className="text-3xl font-bold text-center mb-8 leading-[2.7rem]">
                     Why Selling on 
                     <span className="relative inline-block z-10 mx-2 ">
-                    Amazon is the Best Side Hustle
+                    Amazon is the Best Business
                     <img
                         src="/underline.svg"
                         className="absolute -bottom-2 left-0 w-full z-[-1] h-2"
@@ -28,7 +28,7 @@ export default function FAQ() {
                     for Beginners
                     </h2>
                 </div>
-                <Accordion type="single" collapsible className="w-full max-w-2xl mx-auto text-xl">
+                <Accordion type="single" collapsible className="w-full max-w-2xl mx-auto text-xl mb-[2rem] md:mb-[0rem]">
                 <div className="space-y-6">
                 <AccordionItem value="item-1">
                 <AccordionTrigger className="flex justify-between w-full text-left font-medium">
@@ -52,9 +52,9 @@ export default function FAQ() {
                     </div>
                     </AccordionTrigger>
                     <AccordionContent>
-                    With just $5–10K in startup capital, you can launch a business that earns 30–40% profit margins. 
+                    With just $1–5K in startup capital, you can launch a business that earns 30–40% profit margins. 
                     Compare that to traditional businesses requiring $50K+ or dropshipping’s razor-thin 5–10% margins. 
-                    Plus, everyday products continue selling through economic downturns, giving you rare stability in a side hustle.
+                    Plus, everyday products continue selling through economic downturns.
                     </AccordionContent>
                 </AccordionItem>
 

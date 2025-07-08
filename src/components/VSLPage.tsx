@@ -6,6 +6,7 @@ import Headline from './Headline'
 import Slideshow from './Slideshow'
 import FAQ from './FAQ'
 import Testimonials from './Testimonials'
+import Closing from './Closing'
 import Footer from './Footer'
 import { Play } from 'lucide-react';
 import { Card } from '@/components/ui/card';
@@ -86,7 +87,7 @@ const VSLPage = () => {
         {/* Social Proof Section */}
         <div className="mb-12">
           <h2 className="text-5xl font-bold text-center mb-16">
-            Real People with <span className="text-[#ffa300]">Real Results</span>
+            Real People with <span className="text-foreground">Real Results</span>
           </h2>
           <Slideshow />
         </div>
@@ -97,8 +98,9 @@ const VSLPage = () => {
         {/* Accordion Section*/}
         <div className="mt-48">
           <FAQ/>
-          <CTAButton />
         </div>
+
+        <Closing />
 
         {/* Footer Disclaimer */}
         <Footer/>
