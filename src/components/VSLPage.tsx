@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import CTAButton from './CTAButton'
 import Header from './Header'
 import Headline from './Headline'
+import Videosection from './Videosection'
 import Slideshow from './Slideshow'
 import FAQ from './FAQ'
 import Testimonials from './Testimonials'
@@ -60,29 +61,7 @@ const VSLPage = () => {
         <Headline />
 
         {/* Video Section */}
-        <div className="mb-12">
-          <Card className="bg-black border-red-500 border-2 p-4 shadow-2xl">
-            <div className="relative aspect-video bg-gray-900 rounded-lg flex items-center justify-center group cursor-pointer hover:bg-gray-800 transition-colors">
-              <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-transparent rounded-lg"></div>
-              <div className="text-center z-10">
-                <div className="bg-red-600 rounded-full p-6 mb-4 group-hover:bg-red-500 transition-colors mx-auto w-fit">
-                  <Play size={48} className="text-white fill-white" />
-                </div>
-                <p className="text-2xl font-bold mb-2">Click To Watch The Presentation</p>
-                <p className="text-gray-400">Duration: 37 minutes • Best viewed with headphones</p>
-              </div>
-              
-              {/* Fake video overlay */}
-              <div className="absolute top-4 left-4 bg-red-600 px-3 py-1 rounded text-sm font-bold">
-                🔴 LIVE
-              </div>
-              <div className="absolute bottom-4 right-4 bg-black/80 px-3 py-1 rounded text-sm">
-                HD Quality
-              </div>
-            </div>
-          </Card>
-          <CTAButton />
-        </div>
+        <Videosection />
 
         {/* Social Proof Section */}
         <div className="mb-12">
