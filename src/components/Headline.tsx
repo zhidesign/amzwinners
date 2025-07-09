@@ -1,7 +1,7 @@
 export default function Headline() {
     return (
         <div className="text-center mb-8 animate-fade-in">   
-            <h1 className="font-bold text-5xl max-w-[30rem] mx-auto leading-[3.5rem]">How to Build A  <span className="text-yellow-400">$10K/Month Amazon FBA Business</span></h1>
+            <h1 className="font-bold text-5xl max-w-[35rem] mx-auto leading-[3.5rem]">How to Build A  <span className="text-yellow-400">$10K/Month Amazon FBA Business</span></h1>
 
             
             <p className="text-lg md:text-lg italic text-gray-300 max-w-4xl mx-auto mt-[40px]">
