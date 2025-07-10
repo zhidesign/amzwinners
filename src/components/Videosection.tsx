@@ -29,6 +29,11 @@ export default function Videosection() {
         setShowSignup(true);
     };
 
+    const handleClose = () => {
+      setHasAccess(false);
+      setShowSignup(false);
+    }
+
     return (
                 <>
                 <div className="mb-12">
@@ -42,13 +47,11 @@ export default function Videosection() {
                     />
                     {!hasAccess && <Overlay handleOverlayClick={handleOverlayClick} /> }
                   </div>
-                  <CTAButton />
                 </div>
 
-                {showSignup &&  <FormYoutube handleSubmit={handleSubmit} handleInputChange={handleInputChange} name={formData.name} email={formData.email} phone={formData.phone} />}
-
-
-
+                {showSignup &&  <FormYoutube handleSubmit={handleSubmit} handleInputChange={handleInputChange} handleClose={handleClose} name={formData.name} email={formData.email} phone={formData.phone} />}
+                
+                <CTAButton />
                 </>
                 
 

@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import { X } from 'lucide-react'
 
 export default function FormYouTube(props) {
     return(
@@ -7,6 +8,13 @@ export default function FormYouTube(props) {
 
                         <div className="flex justify-between items-center mb-6">
                             <h2 className="text-2xl font-bold text-gray-800">Sign Up to Watch</h2>
+                            <button
+                                type="button"
+                                onClick={props.handleClose}
+                                className="text-gray-400 hover:text-gray-600 transition-colors"
+                            >
+                                <X size={24} />
+                            </button>
                         </div>
 
                         <form onSubmit={props.handleSubmit}>
