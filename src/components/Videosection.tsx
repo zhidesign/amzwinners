@@ -2,6 +2,8 @@ import CTAButton from './CTAButton'
 import { useState } from 'react'
 import Overlay from './Overlay'
 import FormYoutube from './FormYoutube'
+import validator from 'validator'
+
 export default function Videosection() {
 
     const [showSignup, setShowSignup] = useState(false);
@@ -10,7 +12,8 @@ export default function Videosection() {
         name: "",
         email: "",
         phone: ""
-    })
+    });
+    const [error, setError] = useState("");
 
     const handleInputChange = (e) => {
         setFormData({
@@ -20,9 +23,27 @@ export default function Videosection() {
     };
     
     const handleSubmit = (e) => {
-        e.preventDefault();
-        setHasAccess(true);
-        setShowSignup(false);
+      e.preventDefault();
+      const isValidEmail = validator.isEmail(formData.email);
+      const isValidPhone = validator.isMobilePhone(formData.phone);
+
+      const fakePatterns = [
+      /^1234567890$/, // 1234567890
+      /^(\d)\1{9}$/, // Same digit repeated (1111111111)
+      /^123/, // Starts with 123
+      /^555/, // Starts with 555 (often fake in movies)
+      /^000/, // Starts with 000
+      ];
+
+      const isFakePhone = fakePatterns.some(pattern => pattern.test(formData.phone));
+
+      if (!isValidEmail || !isValidPhone || isFakePhone) {
+        setError("Input a valid email and/or phone #");
+        return;
+      }
+      setError("");
+      setHasAccess(true);
+      setShowSignup(false);
     };
 
     const handleOverlayClick = () => {
@@ -49,7 +70,7 @@ export default function Videosection() {
                   </div>
                 </div>
 
-                {showSignup &&  <FormYoutube handleSubmit={handleSubmit} handleInputChange={handleInputChange} handleClose={handleClose} name={formData.name} email={formData.email} phone={formData.phone} />}
+                {showSignup &&  <FormYoutube handleSubmit={handleSubmit} handleInputChange={handleInputChange} handleClose={handleClose} error={error} name={formData.name} email={formData.email} phone={formData.phone} />}
                 
                 <CTAButton />
                 </>

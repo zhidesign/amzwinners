@@ -61,6 +61,10 @@ export default function FormYouTube(props) {
                             />
                         </div>
 
+                        <div>
+                            <h1 className='text-center text-red-600 font-semibold'>{props.error}</h1>
+                        </div>
+
                         <div className="flex space-x-4 pt-4">
                             <button
                             type="submit"
