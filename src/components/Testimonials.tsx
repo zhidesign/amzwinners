@@ -2,7 +2,7 @@ export default function Testimonials() {
     return (
         <div className="flex flex-col items-center justify-center mt-28 ">
             <div className='mb-16'>
-                <h1 className="text-4xl text-center font-bold">See what the <span className="text-[rgb(255,163,0)] underline">Inner Circle</span> is saying</h1>
+                <h1 className="lg:text-4xl text-[1.3rem]  text-center font-bold">What the <span className="text-[rgb(255,163,0)] underline">Inner Circle</span> is saying</h1>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-[4rem]">

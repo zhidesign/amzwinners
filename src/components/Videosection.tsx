@@ -22,7 +22,7 @@ export default function Videosection() {
         });
     };
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
       const isValidEmail = validator.isEmail(formData.email);
       const isValidPhone = validator.isMobilePhone(formData.phone);
@@ -44,6 +44,25 @@ export default function Videosection() {
       setError("");
       setHasAccess(true);
       setShowSignup(false);
+
+      try {
+        const formDataToSend = new FormData();
+        formDataToSend.append('name', formData.name);
+        formDataToSend.append('email', formData.email);
+        formDataToSend.append('phone', formData.phone);
+
+        const response = await fetch("https://formspree.io/f/mvgrelbe", {
+        method: 'POST',
+        body: formDataToSend,
+        headers: {
+          'Accept': 'application/json'
+          }
+        }); 
+      }
+      catch (error) {
+        console.log("Error with FormSpree", error);
+      }
+      
     };
 
     const handleOverlayClick = () => {

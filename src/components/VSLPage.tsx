@@ -65,7 +65,7 @@ const VSLPage = () => {
 
         {/* Social Proof Section */}
         <div className="mb-12">
-          <h2 className="text-5xl font-bold text-center mb-16">
+          <h2 className="lg:text-5xl text-2xl font-bold text-center mb-16">
             Real People with <span className="text-foreground">Real Results</span>
           </h2>
           <Slideshow />
