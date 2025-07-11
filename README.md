@@ -1,1 +1,1 @@
-## amzwinners site
+## AMZWINNERS Responsive VSL Page
