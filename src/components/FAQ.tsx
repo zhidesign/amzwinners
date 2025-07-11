@@ -17,11 +17,11 @@ export default function FAQ() {
                 <div>
                     <h2 className="text-3xl font-bold text-center mb-8 leading-[2.7rem]">
                     Why Selling on 
-                    <span className="relative inline-block z-10 mx-2 ">
+                    <span className="relative inline-block z-10 mx-2 underline text-yellow-400 sm:text-white sm:no-underline ">
                     Amazon is the Best Business
                     <img
                         src="/underline.svg"
-                        className="absolute -bottom-2 left-0 w-full z-[-1] h-2"
+                        className="absolute -bottom-2 left-0 w-full z-[-1] h-2 hidden sm:block"
                         alt="underline"
                     />
                     </span> 
