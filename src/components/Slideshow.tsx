@@ -46,8 +46,8 @@ export default function Slideshow() {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
-    const [touchStart, setTouchStart] = useState(null);
-    const [touchEnd, setTouchEnd] = useState(null);
+    const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
 
     // Check if device is mobile
     useEffect(() => {
@@ -63,7 +63,6 @@ export default function Slideshow() {
 
     // Handle touch events for swiping
     const handleTouchStart = (e) => {
-        setTouchEnd(null); // Reset touchEnd
         setTouchStart(e.targetTouches[0].clientX);
     };
 
@@ -79,10 +78,10 @@ export default function Slideshow() {
         const isRightSwipe = distance < -50;
 
         if (isLeftSwipe && currentIndex < images.length - 1) {
-            setCurrentIndex(prev => prev + 1);
+            setCurrentIndex(currentIndex + 1);
         }
         if (isRightSwipe && currentIndex > 0) {
-            setCurrentIndex(prev => prev - 1);
+            setCurrentIndex(currentIndex - 1);
         }
     };
 
@@ -101,7 +100,7 @@ export default function Slideshow() {
             <img
                 src={image.url}
                 alt={image.alt}
-                className="w-full max-w-[80%] h-96 object-contain rounded-lg shadow-lg border border-gray-300 mx-auto"
+                className="w-full max-w-80 h-96 object-contain rounded-lg shadow-lg border border-gray-300 mx-auto"
             />
         </div>
     );
@@ -126,9 +125,9 @@ export default function Slideshow() {
                     ) : (
                         /* Mobile: Static with swipe functionality */
                         <div 
-                            className="flex transition-transform duration-300 ease-out select-none"
+                            className="flex transition-transform duration-300 ease-out"
                             style={{
-                                transform: `translateX(-${currentIndex * 100}vw)`
+                                transform: `translateX(-${currentIndex * 100}%)`
                             }}
                             onTouchStart={handleTouchStart}
                             onTouchMove={handleTouchMove}
@@ -153,6 +152,29 @@ export default function Slideshow() {
                                 onClick={() => setCurrentIndex(index)}
                             />
                         ))}
+                    </div>
+                )}
+
+                {/* Mobile: Navigation arrows (optional) */}
+                {isMobile && (
+                    <div className="flex justify-between items-center mt-4">
+                        <button
+                            onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
+                            disabled={currentIndex === 0}
+                            className="px-4 py-2 bg-orange-500 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            Previous
+                        </button>
+                        <span className="text-sm text-gray-600">
+                            {currentIndex + 1} of {images.length}
+                        </span>
+                        <button
+                            onClick={() => setCurrentIndex(Math.min(images.length - 1, currentIndex + 1))}
+                            disabled={currentIndex === images.length - 1}
+                            className="px-4 py-2 bg-orange-500 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            Next
+                        </button>
                     </div>
                 )}
             </div>
