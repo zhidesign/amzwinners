@@ -101,7 +101,7 @@ export default function Slideshow() {
             <img
                 src={image.url}
                 alt={image.alt}
-                className="w-full max-w-80 h-96 object-contain rounded-lg shadow-lg border border-gray-300 mx-auto"
+                className="w-full max-w-[80%] h-96 object-contain rounded-lg shadow-lg border border-gray-300 mx-auto"
             />
         </div>
     );
@@ -128,7 +128,7 @@ export default function Slideshow() {
                         <div 
                             className="flex transition-transform duration-300 ease-out select-none"
                             style={{
-                                transform: `translateX(-${currentIndex * 100}%)`
+                                transform: `translateX(-${currentIndex * 100}vw)`
                             }}
                             onTouchStart={handleTouchStart}
                             onTouchMove={handleTouchMove}
