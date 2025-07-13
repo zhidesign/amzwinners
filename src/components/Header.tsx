@@ -9,8 +9,8 @@ export default function Header() {
       </div>
       </a>
 
-      <div>
-        <img src="amzwinners.jpg" className='w-[100px] mt-[1.3rem] ml-[1.3rem]'/>
+      <div className="flex justify-center md:justify-start text-center  mt-[1.3rem]">
+        <img src="amzwinners.jpg" className='w-[10rem] md:ml-[1rem]'/>
       </div>
       </>
     )
