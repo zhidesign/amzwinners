@@ -64,6 +64,7 @@ export default function Slideshow() {
     // Handle touch events for swiping
     const handleTouchStart = (e) => {
         setTouchStart(e.targetTouches[0].clientX);
+        setTouchEnd(0); // Reset touchEnd
     };
 
     const handleTouchMove = (e) => {
@@ -83,6 +84,10 @@ export default function Slideshow() {
         if (isRightSwipe && currentIndex > 0) {
             setCurrentIndex(currentIndex - 1);
         }
+
+        // Reset touch values
+        setTouchStart(0);
+        setTouchEnd(0);
     };
 
     const ImageCard = ({ image }) => (
@@ -125,7 +130,7 @@ export default function Slideshow() {
                     ) : (
                         /* Mobile: Static with swipe functionality */
                         <div 
-                            className="flex transition-transform duration-300 ease-out"
+                            className="flex transition-transform duration-300 ease-out touch-pan-x"
                             style={{
                                 transform: `translateX(-${currentIndex * 100}%)`
                             }}
@@ -152,29 +157,6 @@ export default function Slideshow() {
                                 onClick={() => setCurrentIndex(index)}
                             />
                         ))}
-                    </div>
-                )}
-
-                {/* Mobile: Navigation arrows (optional) */}
-                {isMobile && (
-                    <div className="flex justify-between items-center mt-4">
-                        <button
-                            onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
-                            disabled={currentIndex === 0}
-                            className="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            Previous
-                        </button>
-                        <span className="text-sm text-gray-600">
-                            {currentIndex + 1} of {images.length}
-                        </span>
-                        <button
-                            onClick={() => setCurrentIndex(Math.min(images.length - 1, currentIndex + 1))}
-                            disabled={currentIndex === images.length - 1}
-                            className="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            Next
-                        </button>
                     </div>
                 )}
             </div>
