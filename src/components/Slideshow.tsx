@@ -46,8 +46,8 @@ export default function Slideshow() {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
-    const [touchStart, setTouchStart] = useState(0);
-    const [touchEnd, setTouchEnd] = useState(0);
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
 
     // Check if device is mobile
     useEffect(() => {
@@ -63,8 +63,8 @@ export default function Slideshow() {
 
     // Handle touch events for swiping
     const handleTouchStart = (e) => {
+        setTouchEnd(null); // Reset touchEnd
         setTouchStart(e.targetTouches[0].clientX);
-        setTouchEnd(0); // Reset touchEnd
     };
 
     const handleTouchMove = (e) => {
@@ -79,15 +79,11 @@ export default function Slideshow() {
         const isRightSwipe = distance < -50;
 
         if (isLeftSwipe && currentIndex < images.length - 1) {
-            setCurrentIndex(currentIndex + 1);
+            setCurrentIndex(prev => prev + 1);
         }
         if (isRightSwipe && currentIndex > 0) {
-            setCurrentIndex(currentIndex - 1);
+            setCurrentIndex(prev => prev - 1);
         }
-
-        // Reset touch values
-        setTouchStart(0);
-        setTouchEnd(0);
     };
 
     const ImageCard = ({ image }) => (
@@ -130,7 +126,7 @@ export default function Slideshow() {
                     ) : (
                         /* Mobile: Static with swipe functionality */
                         <div 
-                            className="flex transition-transform duration-300 ease-out touch-pan-x"
+                            className="flex transition-transform duration-300 ease-out select-none"
                             style={{
                                 transform: `translateX(-${currentIndex * 100}%)`
                             }}
