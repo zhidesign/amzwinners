@@ -173,7 +173,7 @@ export default function Slideshow() {
                             </button>
                             
                             {/* Dots indicator */}
-                            <div className="flex justify-center mt-4 space-x-2">
+                            <div className="flex justify-center mt-4 space-x-2 py-2">
                                 {images.map((_, index) => (
                                     <button
                                         key={index}
