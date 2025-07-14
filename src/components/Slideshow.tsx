@@ -44,10 +44,7 @@ export default function Slideshow() {
         },
     ];
 
-    const [currentIndex, setCurrentIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
-    const [touchStart, setTouchStart] = useState(0);
-    const [touchEnd, setTouchEnd] = useState(0);
 
     // Check if device is mobile
     useEffect(() => {
@@ -61,46 +58,12 @@ export default function Slideshow() {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // Handle touch events for swiping
-    const handleTouchStart = (e) => {
-        setTouchStart(e.targetTouches[0].clientX);
-    };
-
-    const handleTouchMove = (e) => {
-        setTouchEnd(e.targetTouches[0].clientX);
-    };
-
-    const handleTouchEnd = () => {
-        if (!touchStart || !touchEnd) return;
-        
-        const distance = touchStart - touchEnd;
-        const isLeftSwipe = distance > 50;
-        const isRightSwipe = distance < -50;
-
-        if (isLeftSwipe && currentIndex < images.length - 1) {
-            setCurrentIndex(currentIndex + 1);
-        }
-        if (isRightSwipe && currentIndex > 0) {
-            setCurrentIndex(currentIndex - 1);
-        }
-    };
-
     const ImageCard = ({ image }) => (
         <div className="flex-shrink-0 mx-4">
             <img
                 src={image.url}
                 alt={image.alt}
                 className="w-60 h-96 object-contain rounded-lg shadow-lg border border-gray-300"
-            />
-        </div>
-    );
-
-    const MobileImageCard = ({ image }) => (
-        <div className="w-full flex-shrink-0 px-4">
-            <img
-                src={image.url}
-                alt={image.alt}
-                className="w-full max-w-80 h-96 object-contain rounded-lg shadow-lg border border-gray-300 mx-auto"
             />
         </div>
     );
@@ -123,58 +86,27 @@ export default function Slideshow() {
                             ))}
                         </div>
                     ) : (
-                        /* Mobile: Static with swipe functionality */
-                        <div 
-                            className="flex transition-transform duration-300 ease-out"
-                            style={{
-                                transform: `translateX(-${currentIndex * 100}%)`
-                            }}
-                            onTouchStart={handleTouchStart}
-                            onTouchMove={handleTouchMove}
-                            onTouchEnd={handleTouchEnd}
-                        >
+                        /* Mobile: Scroll snap functionality */
+                        <div className="overflow-x-auto flex snap-x snap-mandatory scroll-smooth scrollbar-hide">
                             {images.map((image) => (
-                                <MobileImageCard key={image.id} image={image} />
+                                <div key={image.id} className="min-w-full flex-shrink-0 snap-center flex items-center justify-center">
+                                    <img
+                                        src={image.url}
+                                        alt={image.alt}
+                                        className="w-full max-w-[280px] h-80 object-contain rounded-lg shadow-lg border border-gray-300"
+                                    />
+                                </div>
                             ))}
                         </div>
                     )}
                 </div>
 
-                {/* Mobile: Pagination dots */}
+                {/* Mobile: Simplified indicator (optional) */}
                 {isMobile && (
-                    <div className="flex justify-center mt-4 space-x-2">
-                        {images.map((_, index) => (
-                            <button
-                                key={index}
-                                className={`w-2 h-2 rounded-full transition-colors ${
-                                    index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'
-                                }`}
-                                onClick={() => setCurrentIndex(index)}
-                            />
-                        ))}
-                    </div>
-                )}
-
-                {/* Mobile: Navigation arrows (optional) */}
-                {isMobile && (
-                    <div className="flex justify-between items-center mt-4">
-                        <button
-                            onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
-                            disabled={currentIndex === 0}
-                            className="px-4 py-2 bg-orange-500 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            Previous
-                        </button>
+                    <div className="flex justify-center mt-4">
                         <span className="text-sm text-gray-600">
-                            {currentIndex + 1} of {images.length}
+                            Swipe or scroll horizontally to navigate
                         </span>
-                        <button
-                            onClick={() => setCurrentIndex(Math.min(images.length - 1, currentIndex + 1))}
-                            disabled={currentIndex === images.length - 1}
-                            className="px-4 py-2 bg-orange-500 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            Next
-                        </button>
                     </div>
                 )}
             </div>
@@ -188,6 +120,15 @@ export default function Slideshow() {
                     100% {
                         transform: translateX(-${images.length * 416}px);
                     }
+                }
+                
+                .scrollbar-hide {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+                
+                .scrollbar-hide::-webkit-scrollbar {
+                    display: none;
                 }
                 `}
             </style>
