@@ -80,7 +80,7 @@ export default function Videosection() {
                   <div className="relative aspect-video bg-gray-900 rounded-lg overflow-hidden group cursor-pointer hover:bg-gray-800 transition-colors">
                     <iframe 
                       className="w-full h-full"
-                      src="https://www.youtube.com/embed/NrV-84fa50E" 
+                      src="https://www.youtube.com/embed/KCOieD4cFpE?si=ZdNIWO4X1z0YcKXz" 
                       title="How to Start and Scale your Amazon Business"  
                       allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                       allowFullScreen
