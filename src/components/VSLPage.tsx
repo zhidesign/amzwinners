@@ -50,7 +50,7 @@ const VSLPage = () => {
   // }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b bg-black via-black to-gray-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b bg-blacktext-white">
 
       {/* Header with urgency bar */}
       <Header />
@@ -75,7 +75,7 @@ const VSLPage = () => {
         <Testimonials />
 
         {/* Accordion Section*/}
-        <div className="mt-48">
+        <div className="mt-48 px-5">
           <FAQ/>
         </div>
 
