@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 
 export default function CTAButton() {
     return (
-        <div className='my-[4rem] flex justify-center'>
+        <div className='my-[3rem] flex justify-center'>
             <a href="https://calendly.com/amazonmike2006/30min" target="_blank">
                 <Button variant="gradient" size='custom'>
                 <span className="relative z-10 ">🚀 Book a Free Call</span>
