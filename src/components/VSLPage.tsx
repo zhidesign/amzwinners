@@ -56,7 +56,7 @@ const VSLPage = () => {
       <Header />
 
       {/* OVERACHING DIV */}
-      <div className="container mt-[2rem] mx-auto px-4 py-8 max-w-6xl">
+      <div className="container mt-[2rem] mx-auto px-10 py-8 max-w-6xl">
         {/* Main Headline */}
         <Headline />
 
